@@ -1,0 +1,664 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Future Frontiers | Seminar Registration</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+  --accent-red: #E84D4E;
+  --text-main: #1a1a1a;
+  --text-muted: #666666;
+  --bg-white: #ffffff;
+  --glass-bg: rgba(255, 255, 255, 0.95);
+  --input-bg: #fdfdfd;
+}
+
+
+*{
+    padding: 0;
+    margin: 0;
+    font-family: "Roboto", sans-serif;
+}
+
+/* Section Styling */
+#register {
+  padding: 80px 0;
+  background-color: #fcfcfc;
+}
+
+.glass-panel {
+  background: var(--glass-bg);
+  border: 1px solid #eeeeee;
+  border-radius: 24px;
+  padding: 40px;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.05);
+  position: relative;
+  overflow: hidden;
+  max-width: 650px;
+  margin: 0 auto;
+}
+
+/* Title & Subtext */
+h2 {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-weight: 700;
+  font-size: 2.2rem;
+  color: var(--text-main);
+  text-align: center;
+}
+
+.sub-muted {
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: var(--accent-red) !important;
+  border: 1px solid #ffebeb !important;
+  background: #fff5f5;
+  font-size: 0.8rem;
+}
+
+/* Input Fields */
+.input-wrap {
+  position: relative;
+  margin: 20px 0;
+}
+
+.input-icon {
+  position: absolute;
+  left: 15px;
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  align-items: center;
+}
+
+.form-input {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 12px 10px 12px 25px;
+  border: 1.5px solid #c6c7ca;
+  border-radius: 12px;
+  font-size: 0.9rem;
+  transition: all 0.3s ease;
+  background: var(--input-bg);
+  color: var(--text-main);
+}
+
+.form-input:focus {
+  outline: none;
+  border-color: var(--accent-red);
+  box-shadow: 0 0 0 4px rgba(232, 77, 78, 0.1);
+}
+
+/* Custom Checkboxes */
+.field-label {
+  font-weight: 700;
+  color: var(--text-main);
+  margin-bottom: 15px;
+  display: block;
+}
+
+.checkbox-list {
+  display: flex;
+  gap: 15px;
+  padding: 0 25px;
+  margin: 15px 0;
+}
+
+.round-check {
+  cursor: pointer;
+}
+
+.round-check input {
+  display: none;
+}
+
+.round-check .circle {
+  font-size: 0.9rem;
+  display: inline-block;
+  padding: 8px 20px;
+  border: 1.5px solid #e5e7eb;
+  border-radius: 50px;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  color: var(--text-muted);
+}
+
+
+.checkbox-row{
+    list-style-type: none;
+}
+
+.round-check input:checked + .circle {
+  background: var(--accent-red);
+  color: white;
+  border-color: var(--accent-red);
+}
+
+/* Donation & Total Section */
+#grandTotal {
+  color: var(--accent-red);
+  font-weight: 800;
+}
+
+p {
+  color: var(--text-muted) !important;
+  line-height: 1.6;
+}
+
+/* Submit Button */
+.btn-submit {
+  width: 100%;
+  padding: 18px;
+  background: #CF3D3E;
+  color: white;
+  border: none;
+  border-radius: 12px;
+  font-weight: 800;
+  font-size: 1.1rem;
+  letter-spacing: 1px;
+  cursor: pointer;
+  transition: transform 0.2s, background 0.3s;
+  margin-top: 30px;
+}
+
+.btn-submit:hover {
+  background: #cf3d3e;
+  transform: translateY(-2px);
+  box-shadow: 0 10px 20px rgba(232, 77, 78, 0.3);
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 600px) {
+  .glass-panel { padding: 25px 20px; }
+  .form-grid { grid-template-columns: 1fr; }
+}
+
+
+
+    .form-group label {
+            display: block;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            color: var(--primary);
+
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 0.7rem 1rem;
+            border: 1px solid #c6c7ca;
+            border-radius: 8px;
+            font-family: inherit;
+            font-size: 0.9rem;
+            color: grey;
+            transition: var(--transition);
+            /* background: #f8fafc; */
+        }
+
+        .form-control:focus {
+            outline: none;
+            border-color: var(--primary);
+            background: white;
+            box-shadow: 0 0 0 3px rgba(15, 23, 42, 0.1);
+        }   
+
+
+        .form-full { grid-column: span 2; }
+
+        fieldset{
+          border: 1.5px solid #c6c7ca;
+          border-radius: 10px;
+          padding: 0 10px;
+        }
+
+        legend{
+          margin-left: 15px;
+          font-size: 1rem;
+          color: grey;
+          font-weight: 600;
+        }
+
+
+        /* Button loader Design */
+
+
+    .btn-loader {
+  width: 18px;
+  height: 18px;
+  border: 2px solid rgba(255, 255, 255, 0.4);
+  border-top-color: #fff;
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+  display: none;
+}
+
+/* loading state */
+.btn-submit.loading .btn-text {
+  display: none;
+}
+
+.btn-submit.loading .btn-loader {
+  display: inline-block;
+}
+
+.btn-submit:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+
+
+</style>
+
+<style>
+
+  .video-container{
+    height: 400px;
+    width: 100%;
+    background-color: #cf3d3e;
+  }
+
+</style>
+
+   
+</head>
+
+<body>
+  
+  <!-- Video Section Here -->
+  <div class="video-container">
+    <video
+  class="hero-video"
+  autoplay
+  loop
+  muted
+  playsinline
+  loading="lazy"
+  > 
+    <source src="img/party.mp4" type="video/mp4">
+    Your browser does not support the video tag.
+  </video>
+  </div>
+
+
+
+
+   
+  <section id="register" class="section">
+    <div class="container">
+      <div class="register-wrap glass-panel">
+        <div class="panel-deco" aria-hidden="true"></div>
+
+        <div class="title center" style="margin-bottom:18px;">
+          <h2 style="margin:0 0 6px;">Book <span style="font-weight: 700; color: #E84D4E">Your Slot</span></h2>
+          <div class="sub-muted" 
+               style="margin-top:26px;
+                      margin-bottom: 46px;
+                      margin-left: auto;
+                      margin-right: auto;
+                border: 1px solid #f4f5f7;
+                border-radius: 4px;
+                 padding: 8px;
+                 width: fit-content; ">Limited entries available for the Event</div>
+        </div>
+
+        <form id="contactForm" class="main-form-container">
+         
+          <div>
+            <div class="input-wrap">
+              <span class="input-icon"><i data-lucide="user" style="width:16px;height:16px;color:#9ca3af;"></i></span>
+              <input id="name" type="text" class="form-input" placeholder="Full Name" required>
+            </div>
+          </div>
+
+          <div>
+            <div class="input-wrap">
+              <span class="input-icon"><i data-lucide="mail" style="width:16px;height:16px;color:#9ca3af;"></i></span>
+              <input id="email" type="email" class="form-input" placeholder="Email" required>
+            </div>
+          </div>
+
+          <div>
+            <div class="input-wrap">
+              <span class="input-icon"><i data-lucide="phone" style="width:16px;height:16px;color:#9ca3af;"></i></span>
+              <input id="number" type="tel" class="form-input" placeholder="Phone Number" required>
+            </div>
+          </div>
+
+          <div>
+            <div class="input-wrap">
+              <span class="input-icon"><i data-lucide="phone" style="width:16px;height:16px;color:#9ca3af;"></i></span>
+              <input id="alternateNumber" type="tel" class="form-input" placeholder="Alternative Phone Number" required>
+            </div>
+          </div>
+
+          <div>
+            <div class="input-wrap">
+              <span class="input-icon"><i data-lucide="locate-fixed" style="width:16px;height:16px;color:#9ca3af;"></i></span>
+              <input id="city" type="text" class="form-input" placeholder="City" required>
+            </div>
+           </div>
+
+
+           <div>
+            <div class="input-wrap">
+              <span class="input-icon"><i data-lucide="locate-fixed" style="width:16px;height:16px;color:#9ca3af;"></i></span>
+              <input id="collegeName" type="text" class="form-input" placeholder="Graduation College Name" required>
+            </div>
+           </div>
+
+
+
+
+
+
+
+
+
+           <div class="form-group form-full" style="margin-bottom: 20px;">
+                                <!-- <label>Department / Course</label> -->
+                                <select id="course" class="form-control">
+                                    <option value="" disabled selected>Department / Course</option>
+                                    <option>BBA</option>
+                                    <option>BCA</option>
+                                    <option>B.COM</option>
+                                    <option>B.Sc</option>
+                                    <option>BA</option>
+                                    <option>B.TECH</option>
+                                    
+                                </select>
+                            </div>
+
+
+            <div class="form-group form-full">
+                                <!-- <label>GRADUATION YEAR</label> -->
+                                <select id="graduationYear" class="form-control">
+                                    <option value="" disabled selected>Graduation Year</option>
+                                    <option>Before 2023</option>
+                                    <option>2024</option>
+                                    <option>2025</option>
+                                    <option>2026</option>
+                                    <option>2027</option>                                    
+                                </select>
+                            </div>
+
+
+
+
+
+           
+         <div style="padding-top: 10px; padding-bottom: 0;">
+                <!-- <label class="field-label">Planning to Study MBA in</label> -->
+
+
+                <fieldset>
+                 <legend>Planning To Study MBA in</legend>
+
+            <ul class="checkbox-list">
+              <li class="checkbox-row">
+                <label class="round-check">
+                  <input type="checkbox" value="India" class="Planning-Check">
+                  <span class="circle">India</span>
+                </label>
+              </li>
+
+              <li class="checkbox-row">
+                <label class="round-check">
+                  <input type="checkbox" value="Abroad" class="Planning-Check">
+                  <span class="circle">Abroad</span>
+                </label>
+              </li>
+
+              <li class="checkbox-row">
+                <label class="round-check">
+                  <input type="checkbox" value="Both" class="Planning-Check">
+                  <span class="circle">Both</span>
+                </label>
+              </li>
+            </ul>
+
+            </fieldset>
+
+            </div>
+
+
+             <div>
+              <div class="input-wrap">
+                <span class="input-icon"><i data-lucide="locate-fixed" style="width:16px;height:16px;color:#9ca3af;"></i></span>
+                <input id="collegeLocation" type="text" class="form-input" placeholder="Your Preffered College Location?" required>
+              </div>
+             </div>
+
+
+
+        <div style="padding-top: 10px; padding-bottom: 0;">
+                <!-- <label class="field-label">HAVE YOU GIVEN ANY ENTRANCE EXAM ? (CAT/MAT/XAT/CMAT/CUET)*</label> -->
+          
+        <fieldset>
+          <legend>Have You Given Any Entrance Exam? (CAT/MAT/XAT/CMAT/CUET)</legend> 
+            <ul class="checkbox-list">
+              <li class="checkbox-row">
+                <label class="round-check">
+                  <input type="checkbox" value="Yes" class="Exam-Check">
+                  <span class="circle">Yes</span>
+                </label>
+              </li>
+
+              <li class="checkbox-row">
+                <label class="round-check">
+                  <input type="checkbox" value="No" class="Exam-Check">
+                  <span class="circle">No</span>
+                </label>
+              </li>
+            </ul>
+        </div>
+
+
+         <div style="padding-top: 10px; padding-bottom: 0;">
+                <!-- <label class="field-label">DO YOU WANT  TO COME WITH YOUR GROUP OF FRIENDS</label> -->
+
+        <fieldset>
+          <legend>Do You Want To Come With Your Group Of Friends</legend>
+
+            <ul class="checkbox-list">
+              <li class="checkbox-row">
+                <label class="round-check">
+                  <input type="checkbox" value="Yes" class="Friends-Check">
+                  <span class="circle">Yes</span>
+                </label>
+              </li>
+
+              <li class="checkbox-row">
+                <label class="round-check">
+                  <input type="checkbox" value="No" class="Friends-Check">
+                  <span class="circle">No</span>
+                </label>
+              </li>
+            </ul>
+
+          </fieldset>
+         </div>
+
+
+         <div>
+              <div class="input-wrap">
+                <span class="input-icon"><i data-lucide="locate-fixed" style="width:16px;height:16px;color:#9ca3af;"></i></span>
+                <input id="allFriendsDetails" type="text" class="form-input" placeholder="Please Mention Your Friends Names & Mobile No. For Their Registration" required>
+              </div>
+          </div>
+
+
+        <div style="padding-top: 10px; padding-bottom: 0;">
+                <!-- <label class="field-label">I HEREBY CONFIRM OUR ATTENDENCE FOR THE EVENT.</label> -->
+          
+        <fieldset>
+                 <legend>I Hereby Confirm Our Attendence For The Event</legend>
+
+            <ul class="checkbox-list">
+              <li class="checkbox-row">
+                <label class="round-check">
+                  <input type="checkbox" value="Yes" class="Attendence-Check">
+                  <span class="circle">Yes</span>
+                </label>
+              </li>
+
+              <li class="checkbox-row">
+                <label class="round-check">
+                  <input type="checkbox" value="No" class="Attendence-Check">
+                  <span class="circle">No</span>
+                </label>
+              </li>
+            </ul>
+
+          </fieldset>
+         </div>
+
+
+
+          <!-- <div style="padding-top: 10px; padding-bottom: 0;">
+                <label class="field-label">I HEREBY CONFIRM OUR ATTENDENCE FOR THE EVENT</label>
+
+            <ul class="checkbox-list">
+              <li class="checkbox-row">
+                <label class="round-check">
+                  <input type="checkbox" value="Yes" class="support-check">
+                  <span class="circle">Yes</span>
+                </label>
+              </li>
+
+              <li class="checkbox-row">
+                <label class="round-check">
+                  <input type="checkbox" value="No" class="support-check">
+                  <span class="circle">No</span>
+                </label>
+              </li>
+            </ul>
+            </div> -->
+
+
+          <!-- <div style="padding-top: 8px;">
+            <label class="field-label">Will you be attending alone or with your spouse and/or kids?</label>
+          
+            <div class="mobile-size">
+              <div>
+               <ul class="checkbox-list spouse">
+
+              <div style="display: flex; gap: 10px;">
+                <li class="checkbox-row">
+                <label class="round-check">
+                  <input type="checkbox" value="stag" class="someone-check">
+                  <span class="circle">Stag</span>
+                </label>
+              </li>
+
+              <li class="checkbox-row">
+                <label class="round-check">
+                  <input type="checkbox" value="noStag" class="someone-check">
+                  <span class="circle">+1</span>
+                </label>
+              </li>
+              </div>
+
+            </ul>
+
+              </div>
+
+              <div style="font-size: 15px; ">Total No. of Attendees: <span style="padding-left: 3px;" id="attend">0</span>
+              </div>
+            </div>
+          
+          </div> -->
+
+          <!-- <div style="border-top: 1px solid rgba(255, 255, 255, 0.747); margin: 0 5px;"></div> -->
+
+          <!-- <div style="padding-bottom: 0px ">
+            <p style="margin-top: 0; font-size: 15px; color: rgba(255, 255, 255, 0.747);">
+              Dear Batch Mates, It has been enthralling for the whole team to reach out to all of you once again and extremely Glad to see your willingness to be part of The Event.
+              We Eagerly Wait for your presence at the Nostalgic Once in a Life Event.
+            </p>
+
+           
+            <p style="font-size: 16px;">RETURN TO YOUR ROOTS, FIND YOURSELF.... ONCE AGAIN !!!</p>
+
+            
+            <div>
+              <div class="input-wrap">
+                <span class="input-icon"><i data-lucide="hand-coins" style="width:16px;height:16px;color:#9ca3af;"></i></span>
+                <input id="donate" type="tel" class="form-input" placeholder="Donation Amount" required>
+              </div>
+              <div id="maxDonate" style="display: none; margin-left: 40px; padding: 5px; font-size: 14px; color: rgb(255, 64, 64);"> 
+                Donate maximum 10,000 Rs.  
+              </div>
+            </div>
+
+          </div>
+
+          <div style="border-top: 0.5px solid rgba(255, 255, 255, 0.747);; margin: 0 5px; padding: 0;"></div>
+
+          <div>
+            <h3 style="margin: 0; padding: 0px 5px;">Grand Total: <span id="grandTotal" ></span></h3>
+          </div>
+
+          <div style="border-top: 0.5px solid rgba(255, 255, 255, 0.747);; margin: 0 5px; padding: 0;"></div>
+
+
+        <div style="padding-top: 10px; padding-bottom: 0;">
+           <label class="field-label">Do you need support in arranging accommodation in Kanpur?</label>
+
+            <ul class="checkbox-list">
+              <li class="checkbox-row">
+                <label class="round-check">
+                  <input type="checkbox" value="Yes" class="support-check">
+                  <span class="circle">Yes</span>
+                </label>
+              </li>
+
+              <li class="checkbox-row">
+                <label class="round-check">
+                  <input type="checkbox" value="No" class="support-check">
+                  <span class="circle">No</span>
+                </label>
+              </li>
+            </ul>
+            </div> -->
+
+
+            
+          <!-- here use below --- id="pay-btn" -->
+                <!-- <button  type="submit" class="btn btn-submit">
+                    <span class="btn-text">REGISTER NOW</span>
+                    <span class="loader"></span>
+                  </button> -->
+
+                 <button type="submit" class="btn-submit" id="submitBtn">
+                  <span class="btn-text">REGISTER NOW</span>
+                  <span class="btn-loader"></span>
+                </button>
+        </form>
+
+      </div>
+    </div>
+  </section>
+
+
+
+  <script src="main.js" defer></script>
+
+    
+</body>
+
+</html>
