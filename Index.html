@@ -230,7 +230,7 @@ p {
         /* Button loader Design */
 
 
-    .btn-loader {
+  .btn-loader {
   width: 18px;
   height: 18px;
   border: 2px solid rgba(255, 255, 255, 0.4);
@@ -262,6 +262,18 @@ p {
 
 
 
+
+@media(max-width: 786px){
+  legend{
+          font-size: 0.9rem;
+          color: grey;
+          font-weight: 600;
+        }
+
+}
+
+
+
 </style>
 
 <style>
@@ -270,6 +282,35 @@ p {
     height: 400px;
     width: 100%;
     background-color: #cf3d3e;
+  }
+
+
+  .friend-container{
+    width: 100%;
+    padding: 20px 0;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+
+
+
+  .friend-section{
+    padding: 0px 15px;
+    width: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 40px;
+  }
+
+  .friend-name{
+    width: 100%;
+  }
+
+  .friend-number{
+    width: 100%;
   }
 
 </style>
@@ -494,16 +535,39 @@ p {
          </div>
 
 
-         <div>
-              <div class="input-wrap">
-                <span class="input-icon"><i data-lucide="locate-fixed" style="width:16px;height:16px;color:#9ca3af;"></i></span>
-                <input id="allFriendsDetails" type="text" class="form-input" placeholder="Please Mention Your Friends Names & Mobile No. For Their Registration" required>
-              </div>
-          </div>
+        <div style="padding-top: 10px; padding-bottom: 0;">
+          
+              <fieldset>
+                 <legend>Please Mention Your Friends Names & Mobile No. For Their Registration</legend>
+                 
+                 <div id="friend-container" class="friend-container">
+
+                       <div class="friend-section">
+                         <div class="friend-name">
+                           <input type="text" placeholder="Friend's Name" style="width: 100%; padding: 8px 10px; border: 1px solid grey; border-radius: 7px">
+                         </div>
+
+                         <div class="friend-number">
+                           <input type="tel" placeholder="Friend's Phone Number" style="width: 100%; padding: 8px 10px; border: 1px solid grey; border-radius: 7px">
+                         </div>
+
+                         <div class="add-friend"
+                              style="background-color: white; border: 1px solid black;
+                                     border-radius: 6px; font-size: 15px; padding: 5px;
+                                     cursor: pointer;">
+                           Add
+                         </div>
+                       </div>
+
+                     </div>
+
+
+              </fieldset>
+         </div>
+
 
 
         <div style="padding-top: 10px; padding-bottom: 0;">
-                <!-- <label class="field-label">I HEREBY CONFIRM OUR ATTENDENCE FOR THE EVENT.</label> -->
           
         <fieldset>
                  <legend>I Hereby Confirm Our Attendence For The Event</legend>
@@ -527,123 +591,7 @@ p {
           </fieldset>
          </div>
 
-
-
-          <!-- <div style="padding-top: 10px; padding-bottom: 0;">
-                <label class="field-label">I HEREBY CONFIRM OUR ATTENDENCE FOR THE EVENT</label>
-
-            <ul class="checkbox-list">
-              <li class="checkbox-row">
-                <label class="round-check">
-                  <input type="checkbox" value="Yes" class="support-check">
-                  <span class="circle">Yes</span>
-                </label>
-              </li>
-
-              <li class="checkbox-row">
-                <label class="round-check">
-                  <input type="checkbox" value="No" class="support-check">
-                  <span class="circle">No</span>
-                </label>
-              </li>
-            </ul>
-            </div> -->
-
-
-          <!-- <div style="padding-top: 8px;">
-            <label class="field-label">Will you be attending alone or with your spouse and/or kids?</label>
-          
-            <div class="mobile-size">
-              <div>
-               <ul class="checkbox-list spouse">
-
-              <div style="display: flex; gap: 10px;">
-                <li class="checkbox-row">
-                <label class="round-check">
-                  <input type="checkbox" value="stag" class="someone-check">
-                  <span class="circle">Stag</span>
-                </label>
-              </li>
-
-              <li class="checkbox-row">
-                <label class="round-check">
-                  <input type="checkbox" value="noStag" class="someone-check">
-                  <span class="circle">+1</span>
-                </label>
-              </li>
-              </div>
-
-            </ul>
-
-              </div>
-
-              <div style="font-size: 15px; ">Total No. of Attendees: <span style="padding-left: 3px;" id="attend">0</span>
-              </div>
-            </div>
-          
-          </div> -->
-
-          <!-- <div style="border-top: 1px solid rgba(255, 255, 255, 0.747); margin: 0 5px;"></div> -->
-
-          <!-- <div style="padding-bottom: 0px ">
-            <p style="margin-top: 0; font-size: 15px; color: rgba(255, 255, 255, 0.747);">
-              Dear Batch Mates, It has been enthralling for the whole team to reach out to all of you once again and extremely Glad to see your willingness to be part of The Event.
-              We Eagerly Wait for your presence at the Nostalgic Once in a Life Event.
-            </p>
-
-           
-            <p style="font-size: 16px;">RETURN TO YOUR ROOTS, FIND YOURSELF.... ONCE AGAIN !!!</p>
-
-            
-            <div>
-              <div class="input-wrap">
-                <span class="input-icon"><i data-lucide="hand-coins" style="width:16px;height:16px;color:#9ca3af;"></i></span>
-                <input id="donate" type="tel" class="form-input" placeholder="Donation Amount" required>
-              </div>
-              <div id="maxDonate" style="display: none; margin-left: 40px; padding: 5px; font-size: 14px; color: rgb(255, 64, 64);"> 
-                Donate maximum 10,000 Rs.  
-              </div>
-            </div>
-
-          </div>
-
-          <div style="border-top: 0.5px solid rgba(255, 255, 255, 0.747);; margin: 0 5px; padding: 0;"></div>
-
-          <div>
-            <h3 style="margin: 0; padding: 0px 5px;">Grand Total: <span id="grandTotal" ></span></h3>
-          </div>
-
-          <div style="border-top: 0.5px solid rgba(255, 255, 255, 0.747);; margin: 0 5px; padding: 0;"></div>
-
-
-        <div style="padding-top: 10px; padding-bottom: 0;">
-           <label class="field-label">Do you need support in arranging accommodation in Kanpur?</label>
-
-            <ul class="checkbox-list">
-              <li class="checkbox-row">
-                <label class="round-check">
-                  <input type="checkbox" value="Yes" class="support-check">
-                  <span class="circle">Yes</span>
-                </label>
-              </li>
-
-              <li class="checkbox-row">
-                <label class="round-check">
-                  <input type="checkbox" value="No" class="support-check">
-                  <span class="circle">No</span>
-                </label>
-              </li>
-            </ul>
-            </div> -->
-
-
-            
-          <!-- here use below --- id="pay-btn" -->
-                <!-- <button  type="submit" class="btn btn-submit">
-                    <span class="btn-text">REGISTER NOW</span>
-                    <span class="loader"></span>
-                  </button> -->
-
+         
                  <button type="submit" class="btn-submit" id="submitBtn">
                   <span class="btn-text">REGISTER NOW</span>
                   <span class="btn-loader"></span>
@@ -653,6 +601,16 @@ p {
       </div>
     </div>
   </section>
+
+
+
+  <div style="background-color: rgb(233, 232, 232); height: 100px; display: flex; align-items: center; justify-content: center; ">
+    <a href="login.html">
+      <button style="background-color: #CF3D3E; padding: 10px 20px; color: white; font-weight: 600; cursor: pointer; border: none; border-radius: 10px;">
+          Get Pass By Friend ->
+      </button>
+    </a>
+  </div>
 
 
 
