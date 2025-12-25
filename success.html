@@ -9,31 +9,23 @@
 <title>Atlas Event Booking</title>
 
 <style>
-:root{
-  --bg:#071022;
-  --accent-cyan: #00f3ff;
-  --accent-blue: #3b82f6;
-  --card:#0f1724;
-  --accent1:#00d4ff; /* cyan */
-  --accent2:#ff4db8; /* pink */
-  --muted:rgba(255,255,255,0.12);
-  --glass:linear-gradient(135deg, rgba(255,255,255,0.03), rgba(255,255,255,0.01));
-}
+
 
 *{
   box-sizing:border-box;
   padding: 0;
     margin: 0;
+    color: #000;
 }
 
 
 
 body{
-  font-family:Inter, Poppins, system-ui, -apple-system, "Segoe UI", Roboto;
+  font-family: 'Poppins', system-ui;
   background: radial-gradient(600px 300px at 10% 20%, rgba(0,212,255,0.06), transparent),
               radial-gradient(600px 300px at 90% 80%, rgba(255,77,184,0.04), transparent),
               var(--bg);
-  color:#e6eef8;
+  background-color: #E0E0E0;
   display:flex;
   flex-direction: column;
   align-items:center;
@@ -42,6 +34,7 @@ body{
 
 
 .page-container{
+  height: 100%;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -50,20 +43,10 @@ body{
 }
 
 
-.pay-success{
-  width: 100%;
-  height: fit-content;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 10px;
-  padding: 20px 0;
-}
-
 .container{
   width:100%;
   max-width:980px;
-  background-color: #ff4db8;
+  /* background-color: #ff4db8; */
   display:flex;
   gap:24px;
   flex-direction:column;
@@ -71,38 +54,30 @@ body{
   justify-content: center;
 }
 
-.header{
-  text-align:center;
-  margin: 20px;
-}
 
-.header h1{margin:0;font-size:1.5rem;font-weight:700;letter-spacing:0.6px}
-
-.header p{margin:6px 0 0;color:rgba(230,238,248,0.75);font-size:0.92rem}
 
 .ticket-wrap{
+  /* background-color: #fff; */
   width:100%;
   height: 80%;
-  /* display:grid; 
-  grid-template-columns: 1fr 320px; */
   margin: auto;
-  gap:20px;
+  gap:10px;
 }
 
 
 .ticket{
-  background-color: yellow;
-  background:var(--glass);
-  border-radius:18px;
-  padding:22px;
+  background-color: #fff;
+  padding:15px 22px 30px 22px;
   border:1px solid var(--muted);
   box-shadow: 0 20px 40px rgba(3,8,18,0.6);
   position:relative;
   overflow:hidden;
+  border-bottom-left-radius: 18px;
+  border-bottom-right-radius: 18px;
 }
 .ticket::after{
   content:'';position:absolute;inset:0;pointer-events:none;
-  background: linear-gradient(90deg, rgba(0,212,255,0.06) 0%, transparent 30%, transparent 70%, rgba(255,77,184,0.04) 100%);
+  /* background: linear-gradient(90deg, rgba(0,212,255,0.06) 0%, transparent 30%, transparent 70%, rgba(255,77,184,0.04) 100%); */
 }
 .ticket-main{display:flex;flex-direction:column;gap:18px;position:relative}
 .title-row{display:flex;align-items:flex-start;gap:16px}
@@ -112,19 +87,29 @@ body{
   display:flex;align-items:center;justify-content:center;font-weight:800;color:#051426;font-size:0.85rem;
 }
 .event-info{flex:1}
-.event-title{font-family: 'Orbitron', sans-serif; font-size:1.6rem; font-weight: 600; margin:0;text-transform:uppercase;line-height:1}
+
+.event-title{
+   color: White;
+   font-size:1.5rem; 
+   font-weight: 700; 
+   margin:0;
+   /* text-transform:uppercase; */
+   line-height:1
+  }
+
 .tagline{margin-top:10px;color:rgba(230,238,248,0.8);font-weight:600;font-size:0.9rem}
 
 .details-grid{
   display:grid;
   grid-template-columns:repeat(2, 1fr);
   gap:10px;
-  margin-top:6px
+  margin-top: 0px;
+  /* background-color: white;  */
 }
 
 .detail{
-  background:rgba(255,255,255,0.02);
-  padding:10px;
+  /* background-color: white; */
+  padding: 0 10px;
   border-radius:10px;
   border:1px solid rgba(255,255,255,0.03)
 }
@@ -132,19 +117,55 @@ body{
 
 .label{
   font-size: 0.7rem;
-  color:rgba(230,238,248,0.6);
+  color: #CF3D3E;
+  font-weight: 600;
 }
 
 .detail {
   font-size:0.9rem;
   color: white;
 }
-.detail .value{margin-top:6px;font-weight:500;font-size:0.90rem}
-.footer-row{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-top:8px}
+
+.detail{
+  margin-top:6px;
+  font-weight:500;
+  font-size:0.90rem
+}
+
+.value{
+  color: #3d3d3d;
+  margin-top:4px;
+  font-weight:500;
+  font-size:1rem
+}
+
+.footer-row{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:12px;
+  margin:8px
+}
+
 .count-pill{background:rgba(255,255,255,0.03);padding:10px 14px;border-radius:999px;border:1px solid rgba(255,255,255,0.04);font-weight:700}
 .actions{display:flex;gap:12px}
-.btn{background:linear-gradient(90deg,var(--accent1),var(--accent2));border:none;padding:10px 14px;border-radius:10px;font-weight:700;cursor:pointer;color:#051426}
-.btn:hover{transform: scale(1.05); transition: ease-in-out; box-shadow: 0 4px 14px rgba(0,0,0,0.2);}
+
+.btn{
+  background-color: #CF3D3E;
+  border:none;
+  padding:10px 14px;
+  border-radius:10px;
+  font-weight:700;
+  cursor:pointer;
+  color:#fff;
+}
+
+.btn:hover{
+  transform: scale(1.05); 
+  transition: ease-in; 
+  box-shadow: 0 4px 14px rgba(0,0,0,0.2);
+}
+
 .btn:active {
   transform: scale(0.97);
 }
@@ -157,13 +178,13 @@ body{
 
 
 .back-btn{
-  background:linear-gradient(90deg, var(--accent-cyan), var(--accent-blue));
+  background-color: #CF3D3E;
   border:none;
   padding:10px 14px;
   border-radius:10px;
   font-weight:700;
   cursor:pointer;
-  color:#051426  
+  color:#fff  
 }
 
 .back-btn:hover{
@@ -206,7 +227,7 @@ body{
   .stub{order:2;width:100%}
 }
 @media (max-width:420px){
-  .header h1{font-size:0.98rem}
+
   .event-title{font-size:1.15rem}
   .details-grid{grid-template-columns:1fr}
   .event-badge{width:56px;height:56px}
@@ -232,10 +253,15 @@ body{
 
 </style>
 
+
+<style>
+  .line{
+    border-top: 1px solid #cac9c9;
+    padding: 0 28px;
+  }
+</style>
+
 </head>
-
-
-
 
 
 
@@ -245,64 +271,74 @@ body{
 <div class="page-container">
 
 
-    <div id="checkVisible">
-
-    
-    <!-- <div class="pay-success">
-      <div style="width: 60px; height: 60px;">
-      <img src="img/payment-tick-remove.png" style="width: 100%; height: 100%;" alt="">
-      </div>
-
-      <div class="header">
-      <h1>Thankyou For Payment.</h1>
-      <h1>Your pass is ready</h1>
-      </div>
-    </div> -->
-
-    </div>
-
-
-
     <div class="ticket-wrap">
+
+      <div style="background-color: #CF3D3E; padding: 40px; border-top-right-radius: 30px; border-top-left-radius: 30px; text-align: center;">
+              <div class="title-row">
+               <div class="event-info">
+                 <div id="name-local" class="event-title">Mohammad Mohsin</div>
+               </div>
+              </div>
+          </div>
 
       <div class="ticket" role="article">
         <div class="ticket-main">
-          <div class="title-row">
-            <!-- <div class="event-badge">VIP</div> -->
-            <div class="event-info">
-              <div class="event-title">Event Pass</div>
-            </div>
-          </div>
 
-          <div class="details-grid">
-            <div class="detail">
-              <div class="label">DATE</div><div id="pass-name" class="value">Jan 18, 2026</div></div>
-            <div class="detail"><div class="label">TIME</div><div class="value">10:30 PM Onwards</div></div>
-          </div>
+               <div class="details-grid">
+                <div class="detail">
+                 <div class="label">DATE</div><div id="pass-name" class="value">Jan 18, 2026</div></div>
+                <div class="detail"><div class="label">TIME</div><div class="value">10:30 PM Onwards</div></div>
+               </div>
 
+               <div style="padding: 0 8px;">
+                  <div class="line"></div>
+                </div>
 
 
                 <div class="detail"><div class="label">VENUE</div>
                         <div class="value">The Hotel Landmark Tower<br>
-                             <p style="padding: 6px 0;">Near Naveen Market, kanpur</p>
+                             <p style="padding: 1px 0; color: #727171dc; font-weight: 400;">Near Naveen Market, kanpur</p>
                         </div>
                 </div>
 
+                <div style="padding: 0 8px;">
+                  <div class="line"></div>
+                </div>
 
-          <div style="margin: auto;" >
+
+          <!-- <div style="margin: auto;" >
               <h1 id="name-local">Mohammad Mohsin</h1>
-          </div>
-
-          <!-- <div class="qr-box" style="display: flex; flex-direction: column; align-items: center; justify-content: center;">
-              <canvas  id="partyQR" style="text-align: center;"></canvas>
           </div> -->
 
+
             <div class="details-grid"> 
-               <div class="detail"><div class="label">City</div><div id="city-local" class="value">Kanpur</div></div>
-               <div class="detail"><div class="label">Phone Number</div><div id="phone-local" class="value">6388XXXXXXX</div></div>
+               <div class="detail"><div class="label">CITY</div><div id="city-local" class="value">Kanpur</div></div>
+               <div class="detail"><div class="label">PHONE NUMBER</div><div id="phone-local" class="value">6388XXXXXXX</div></div>
             </div>
-            <div class="detail"><div class="label">Email</div><div id="email-local" class="value">mosnxxxxxxx@gmail.com</div></div>
+
+               <div style="padding: 0 8px;">
+                  <div class="line"></div>
+                </div>
+
+            <div class="detail"><div class="label">EMAIL</div><div id="email-local" class="value">mosnxxxxxxx@gmail.com</div></div>
             
+
+            <div style="padding: 0 8px;">
+                  <div style="border: 1px dotted #cac9c9 ;"></div>
+                </div>
+
+                <div class="detail">
+                          <div class="label">REFERENCE FRIENDS</div>
+                             <div id="friend-local" style="list-style-type: none; margin-top: 10px;">       
+                      
+                             </div>
+                          </div>
+            
+
+           
+
+
+
           </div>
 
         </div>
@@ -348,15 +384,6 @@ body{
 <script>
 
 
-const checkVisible = document.getElementById('checkVisible')
-
-     if(localStorage.getItem('fromLogin')){
-       checkVisible.style.display = 'none' 
-     } else {
-       checkVisible.style.display = 'flex'
-     }
-
-
 
 
 //--------------------------------------
@@ -370,9 +397,21 @@ document.addEventListener("DOMContentLoaded", function () {
   document.getElementById('city-local').textContent = localStorage.getItem('city')  
   document.getElementById('email-local').textContent = localStorage.getItem('email')
   document.getElementById('name-local').textContent = localStorage.getItem('name')
+  const details = JSON.parse(localStorage.getItem('all-Friends'));
 
-  }
-)     
+
+  const wrapper = document.getElementById('friend-local');
+
+wrapper.innerHTML = "";
+
+details.forEach(item => {
+  const li = document.createElement("li");
+  li.className = "value";
+  li.textContent = `${item.name}`;
+  wrapper.appendChild(li);
+});
+
+})
 
 
 
@@ -461,55 +500,6 @@ async function downloadTicketClicked() {
     alert('Could not create/download ticket: ' + (err.message || err));
   } finally {
     downloadBtn.classList.remove('loading');
-  }
-}
-
-
-
-
-
-
-
-
-
-// Auto-send on page load (upload only, no download)
-
-if(!localStorage.getItem('fromLogin')){
-  window.addEventListener('load', () => {
-      setTimeout(sendEmailPDF, 200);
-      }); 
-  }
- 
-
-
-async function sendEmailPDF() {
-
-  const emailReceiver = localStorage.getItem('email')
-
-  try {
-    const pdfBlob = await generatePdfBlobFromNode();
-    const file = new File([pdfBlob], `ticket-${new Date().toISOString().slice(0,10)}.pdf`, { type: 'application/pdf' });
-    const formData = new FormData();
-    formData.append('file', file);
-    formData.append('to', emailReceiver);
-    formData.append('subject', 'Your Event Ticket');
-    formData.append('text', 'Please find your ticket attached.');
-
-    // const resp = await fetch('https://api.ultimatejaipurians.in/api/upload-pdf', {
-      
-    //   method: 'POST',
-    //   body: formData
-     
-    // });
-
-    if (!resp.ok) {
-      const json = await resp.json().catch(()=>({}));
-      console.error('Upload failed', json);
-    } else {
-      console.log('Uploaded & emailed successfully');
-    }
-  } catch (err) {
-    console.error('sendEmailPDF error:', err);
   }
 }
 

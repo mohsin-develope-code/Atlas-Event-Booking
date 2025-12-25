@@ -20,23 +20,6 @@ function allowOnlyOne(className) {
 
 
 
-
-    //Button Loader
-  //   const btn = document.getElementById("submitBtn");
-
-  // btn.addEventListener("click", function () {
-  //   btn.classList.add("loading");
-  //   btn.disabled = true;
-
-  //   // simulate form submit (remove this in real form)
-  //   setTimeout(() => {
-  //     btn.classList.remove("loading");
-  //     btn.disabled = false;
-  //   }, 3000);
-  // });
-
-
-
     //----------------------------------
     //         Catch Input Values
     //----------------------------------
@@ -54,7 +37,6 @@ function allowOnlyOne(className) {
       const city = document.getElementById("city").value.trim();
       const collegeName = document.getElementById("collegeName").value.trim();
       const collegeLocation = document.getElementById("collegeLocation").value;
-      const allFriendsDetails = document.getElementById("allFriendsDetails").value;
       //get dropdown value
       const course = document.getElementById("course").value;
       const graduationYear = document.getElementById("graduationYear").value;
@@ -63,6 +45,19 @@ function allowOnlyOne(className) {
       const exam = document.querySelector(".Exam-Check:checked")?.value || "";
       const friend = document.querySelector(".Friends-Check:checked")?.value || "";
       const attendence = document.querySelector(".Attendence-Check:checked")?.value || "";
+
+     let allFriendsDetails = [];
+
+      document.querySelectorAll(".friend-section").forEach(section => {
+        const name = section.querySelector(".friend-name input").value;
+        const phone = section.querySelector(".friend-number input").value;
+
+        allFriendsDetails.push({ name, phone });
+      });
+
+       console.log('now you see a friend details');
+       console.log(allFriendsDetails)
+
 
       const formData = {
         name: name,
@@ -95,7 +90,7 @@ function allowOnlyOne(className) {
 
 
       try {
-        const response = await fetch('http://localhost:8000/api/form-details', {
+        const response = await fetch('https://api.ultimatejaipurians.in/api/form-details', {
                                       method: "POST", 
                                       body: JSON.stringify(formData),
                                       headers: { 'Content-Type': 'application/json' }
@@ -112,6 +107,7 @@ function allowOnlyOne(className) {
             localStorage.setItem('phone', userData.phone)
             localStorage.setItem('email', userData.email)
             localStorage.setItem('name', userData.name)
+            localStorage.setItem('all-Friends', JSON.stringify(userData.allFriendsDetails))
            
           //redirect
           setTimeout(window.location.href = 'success.html', 3000);
@@ -130,3 +126,52 @@ function allowOnlyOne(className) {
 
 
     })
+
+
+
+
+
+    //-------------------------------------------------------
+    //              Add Friend Detail Fields
+    //-------------------------------------------------------
+
+  const friendContainer = document.getElementById("friend-container");
+
+  friendContainer.addEventListener("click", function (e) {
+
+  // ➕ ADD FRIEND
+  if (e.target.classList.contains("add-friend")) {
+    const newFriend = document.createElement("div");
+    newFriend.classList.add("friend-section");
+
+    newFriend.innerHTML = `
+      <div class="friend-name">
+        <input type="text" placeholder="Friend's Name" style="width: 100%; padding: 8px 10px; border: 1px solid grey; border-radius: 7px">
+      </div>
+
+      <div class="friend-number">
+        <input type="tel" placeholder="Friend's Phone Number" style="width: 100%; padding: 8px 10px; border: 1px solid grey; border-radius: 7px">
+      </div>
+
+      <div class="remove-friend"
+           style="margin-left: 20px; background-color: grey;
+                  padding: 3px 8px; border-radius: 50%;
+                  cursor: pointer;">
+        ×
+      </div>
+    `;
+
+    friendContainer.appendChild(newFriend);
+  }
+
+  if (e.target.classList.contains("remove-friend")) {
+    const section = e.target.closest(".friend-section");
+    section.remove();
+  }
+
+});
+
+
+
+
+
