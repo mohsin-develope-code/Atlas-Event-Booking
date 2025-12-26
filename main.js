@@ -55,25 +55,26 @@ function allowOnlyOne(className) {
         allFriendsDetails.push({ name, phone });
       });
 
-       console.log('now you see a friend details');
-       console.log(allFriendsDetails)
+       if(!name || !phone){
+        return
+       }
 
 
       const formData = {
         name: name,
-        email: email,
+        email: email || "",
         phone: phone,
-        alternatePhone: alternatePhone, 
-        city: city,
-        collegeName: collegeName,
-        collegeLocation: collegeLocation,
-        allFriendsDetails: allFriendsDetails,
-        course: course,
-        graduationYear: graduationYear,
-        planning: planning,
-        exam: exam,
-        friend: friend,
-        attendence: attendence,
+        alternatePhone: alternatePhone || "", 
+        city: city || "",
+        collegeName: collegeName || "",
+        collegeLocation: collegeLocation || "",
+        allFriendsDetails: allFriendsDetails || "",
+        course: course || "",
+        graduationYear: graduationYear || "",
+        planning: planning || "",
+        exam: exam || "",
+        friend: friend || "",
+        attendence: attendence || "",
       }
 
 

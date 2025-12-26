@@ -6,7 +6,12 @@
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-<title>Atlas Event Booking</title>
+<title>Atlas Entry Pass</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+
+
 
 <style>
 
@@ -80,7 +85,14 @@ body{
   /* background: linear-gradient(90deg, rgba(0,212,255,0.06) 0%, transparent 30%, transparent 70%, rgba(255,77,184,0.04) 100%); */
 }
 .ticket-main{display:flex;flex-direction:column;gap:18px;position:relative}
-.title-row{display:flex;align-items:flex-start;gap:16px}
+
+.title-row{
+  display:flex;
+  align-items:center;
+  justify-content: center;
+  gap:16px
+}
+
 .event-badge{
   min-width:78px;height:78px;border-radius:12px;
   background:linear-gradient(135deg,var(--accent1),var(--accent2));
@@ -273,10 +285,14 @@ body{
 
     <div class="ticket-wrap">
 
-      <div style="background-color: #CF3D3E; padding: 40px; border-top-right-radius: 30px; border-top-left-radius: 30px; text-align: center;">
+      <div style="background-color: #CF3D3E; padding: 20px; border-top-right-radius: 30px; border-top-left-radius: 30px; text-align: center;">
               <div class="title-row">
                <div class="event-info">
-                 <div id="name-local" class="event-title">Mohammad Mohsin</div>
+                 <div class="event-title">Free Entry Pass</div>
+               </div>
+
+               <div style="background-color: white; width: 80px; height: 80px; border-radius: 50%;">
+                <img style="width: 100%; height: 100%; object-fit: contain;" src="https://atlasstudy.in/assets/images/atlas.png" alt="">
                </div>
               </div>
           </div>
@@ -284,10 +300,26 @@ body{
       <div class="ticket" role="article">
         <div class="ticket-main">
 
+           <div class="details-grid"> 
+               <div class="detail"><div class="label">Name</div><div id="name-local" class="value">MoXXX</div></div>
+               <div id="name-local" class="event-title">Free Entry Pass</div>
+            </div>
+
+            
+               <div style="padding: 0 8px;">
+                  <div class="line"></div>
+                </div>
+
+            <div class="detail"><div class="label">PHONE NUMBER</div><div id="phone-local" class="value">6388XXXXXXX</div></div>
+
+            <div style="padding: 0 8px;">
+                  <div class="line"></div>
+                </div>
+
                <div class="details-grid">
                 <div class="detail">
                  <div class="label">DATE</div><div id="pass-name" class="value">Jan 18, 2026</div></div>
-                <div class="detail"><div class="label">TIME</div><div class="value">10:30 PM Onwards</div></div>
+                <div class="detail"><div class="label">TIME</div><div class="value">10:00 AM Onwards</div></div>
                </div>
 
                <div style="padding: 0 8px;">
@@ -301,42 +333,6 @@ body{
                         </div>
                 </div>
 
-                <div style="padding: 0 8px;">
-                  <div class="line"></div>
-                </div>
-
-
-          <!-- <div style="margin: auto;" >
-              <h1 id="name-local">Mohammad Mohsin</h1>
-          </div> -->
-
-
-            <div class="details-grid"> 
-               <div class="detail"><div class="label">CITY</div><div id="city-local" class="value">Kanpur</div></div>
-               <div class="detail"><div class="label">PHONE NUMBER</div><div id="phone-local" class="value">6388XXXXXXX</div></div>
-            </div>
-
-               <div style="padding: 0 8px;">
-                  <div class="line"></div>
-                </div>
-
-            <div class="detail"><div class="label">EMAIL</div><div id="email-local" class="value">mosnxxxxxxx@gmail.com</div></div>
-            
-
-            <div style="padding: 0 8px;">
-                  <div style="border: 1px dotted #cac9c9 ;"></div>
-                </div>
-
-                <div class="detail">
-                          <div class="label">REFERENCE FRIENDS</div>
-                             <div id="friend-local" style="list-style-type: none; margin-top: 10px;">       
-                      
-                             </div>
-                          </div>
-            
-
-           
-
 
 
           </div>
@@ -349,7 +345,7 @@ body{
 
 
     <div class="footer-row">
-            <!-- <div class="count-pill">Admit: 1 Person</div> -->
+           
              <div class="actions">
               <a href="index.html"><button class="back-btn">Back To Home</button></a>
             </div>
@@ -394,10 +390,7 @@ body{
 document.addEventListener("DOMContentLoaded", function () {  
 
   document.getElementById('phone-local').textContent = localStorage.getItem('phone')
-  document.getElementById('city-local').textContent = localStorage.getItem('city')  
-  document.getElementById('email-local').textContent = localStorage.getItem('email')
   document.getElementById('name-local').textContent = localStorage.getItem('name')
-  const details = JSON.parse(localStorage.getItem('all-Friends'));
 
 
   const wrapper = document.getElementById('friend-local');

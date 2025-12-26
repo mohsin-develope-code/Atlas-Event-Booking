@@ -8,6 +8,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700;900&display=swap" rel="stylesheet">
     
     <style>
         :root {
@@ -23,7 +24,7 @@
 *{
     padding: 0;
     margin: 0;
-    font-family: "Roboto", sans-serif;
+    font-family: "Poppins", sans-serif;
 }
 
 /* Section Styling */
@@ -313,6 +314,111 @@ p {
     width: 100%;
   }
 
+
+
+</style>
+
+
+<style>
+  .PassBtn-Container {
+    text-align: center;
+    padding: 60px 20px;
+    font-family: 'Poppins', sans-serif;
+    background-color: #f8f9fa; /* Light background */
+  }
+
+  /* HEADLINE STYLING */
+  .PassBtn-Container h1 {
+    font-size: 2rem;
+    font-weight: 900; /* Extra Bold */
+    color: #222;
+    margin-bottom: 30px;
+    line-height: 1.2;
+    text-transform: uppercase;
+    letter-spacing: -1px;
+  }
+
+  /* Highlight specific text */
+  .highlight {
+    color: #CF3D3E; /* Red accent */
+    position: relative;
+    display: inline-block;
+  }
+  
+  /* Optional underline decoration */
+  .highlight::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 8px;
+    bottom: 5px;
+    left: 0;
+    background-color: rgba(207, 61, 62, 0.15);
+    z-index: -1;
+  }
+
+  /* BUTTON STYLING */
+  .Pass-btn {
+    background: linear-gradient(135deg, #CF3D3E 0%, #e04f50 100%);
+    color: white;
+    font-family: 'Poppins', sans-serif;
+    font-size: 1.1rem;
+    font-weight: 700;
+    padding: 18px 40px;
+    border: none;
+    border-radius: 50px; /* Pill shape */
+    cursor: pointer;
+    box-shadow: 0 10px 25px rgba(207, 61, 62, 0.4); /* Glow shadow */
+    transition: all 0.3s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  /* HOVER EFFECTS */
+  .Pass-btn:hover {
+    transform: translateY(-3px); /* Moves up slightly */
+    box-shadow: 0 15px 30px rgba(207, 61, 62, 0.6);
+  }
+
+  .Pass-btn:active {
+    transform: scale(0.98);
+  }
+
+  /* Responsive Text */
+  @media (max-width: 600px) {
+    .PassBtn-Container h1 { font-size: 1.8rem; }
+    .Pass-btn { width: 100%; justify-content: center; }
+  }
+
+   @media(max-width: 786px){
+    .PassBtn-Container{
+    padding: 40px 40px ;  
+    display: flex; 
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .PassBtn-Container h1{
+    font-size: 1.5rem;
+  }
+}
+
+#header-img-mobile{
+  display: none;
+}
+
+@media(max-width: 786px) {
+  #header-img-mobile{
+    display: flex;
+  }
+
+  #header-img{
+    display: none;
+  }
+}
+
+
 </style>
 
    
@@ -322,30 +428,41 @@ p {
   
   <!-- Video Section Here -->
   <div class="video-container">
-    <video
-  class="hero-video"
-  autoplay
-  loop
-  muted
-  playsinline
-  loading="lazy"
-  > 
-    <source src="img/party.mp4" type="video/mp4">
-    Your browser does not support the video tag.
-  </video>
+    <img id="header-img" style="width: 100%; height: 100%; object-fit: cover;" src="img/header-img.jpeg" alt="" srcset="">
+    <img id="header-img-mobile" style="width: 100%; height: 100%; object-fit: fill;" src="img/header-img-mobile.jpeg" alt="" srcset="">
   </div>
 
 
+    <!-- <div class="PassBtn-Container">
+      <h1>Claim Your Free Atlas Entry Pass Now</h1>
+       <a href="login.html">
+         <button class="Pass-btn">
+          Download Free Entry Pass ->
+         </button>
+       </a>
+      </div> -->
+
+      <div class="PassBtn-Container">
+  <h1>Claim Your <span class="highlight">Free Atlas</span><br>Entry Pass Now</h1>
+  
+  <a href="login.html" style="text-decoration: none;">
+    <button class="Pass-btn">
+      Download Free Entry Pass 
+      <span>&rarr;</span> </button>
+  </a>
+</div>
 
 
    
   <section id="register" class="section">
+
     <div class="container">
+      
       <div class="register-wrap glass-panel">
         <div class="panel-deco" aria-hidden="true"></div>
 
         <div class="title center" style="margin-bottom:18px;">
-          <h2 style="margin:0 0 6px;">Book <span style="font-weight: 700; color: #E84D4E">Your Slot</span></h2>
+          <h2 style="margin:0 0 6px;">Study Expo <span style="font-weight: 700; color: #E84D4E">Registration Form </span></h2>
           <div class="sub-muted" 
                style="margin-top:26px;
                       margin-bottom: 46px;
@@ -601,16 +718,6 @@ p {
       </div>
     </div>
   </section>
-
-
-
-  <div style="background-color: rgb(233, 232, 232); height: 100px; display: flex; align-items: center; justify-content: center; ">
-    <a href="login.html">
-      <button style="background-color: #CF3D3E; padding: 10px 20px; color: white; font-weight: 600; cursor: pointer; border: none; border-radius: 10px;">
-          Get Pass By Friend ->
-      </button>
-    </a>
-  </div>
 
 
 
