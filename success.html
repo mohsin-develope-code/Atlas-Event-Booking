@@ -292,7 +292,7 @@ body{
                </div>
 
                <div style="background-color: white; width: 80px; height: 80px; border-radius: 50%;">
-                <img style="width: 100%; height: 100%; object-fit: contain;" src="https://atlasstudy.in/assets/images/atlas.png" alt="">
+                <img style="width: 100%; height: 100%; object-fit: contain;" src="img/atlas-pass-logo.png" alt="">
                </div>
               </div>
           </div>
@@ -421,82 +421,113 @@ details.forEach(item => {
  //             Download PDF
  //-------------------------------------------------------------
 
-
- const downloadBtn = document.getElementById('downloadBtn');
+ 
+const downloadBtn = document.getElementById('downloadBtn');
 
 async function generatePdfBlobFromNode() {
-  console.log("Function Button Clicked....")
   const node = document.querySelector('.ticket-wrap');
   if (!node) throw new Error('Ticket element not found');
-  // temporarily remove transition if any
+
   const prevTransition = node.style.transition;
   node.style.transition = 'none';
 
   const canvas = await html2canvas(node, {
-    scale: 2,
+    scale: 3, // high quality
     useCORS: true,
-    backgroundColor: "#14192D",
+    backgroundColor: "#fff",
     scrollY: -window.scrollY
   });
 
   node.style.transition = prevTransition;
 
   const imgData = canvas.toDataURL('image/png');
+
   const { jsPDF } = window.jspdf;
-  const pdf = new jsPDF({ orientation: 'portrait', unit: 'pt', format: 'a4' });
+  const pdf = new jsPDF({
+    orientation: 'portrait',
+    unit: 'pt',
+    format: 'a4'
+  });
 
   const pageWidth = pdf.internal.pageSize.getWidth();
   const pageHeight = pdf.internal.pageSize.getHeight();
 
-  // center and size (adjust as needed)
-  const passWidth = 350;
-  const passHeight = 500;
-  const x = (pageWidth - passWidth) / 2;
-  const y = (pageHeight - passHeight) / 2;
+  // 50% of page
+  const maxWidth = pageWidth * 0.5;
+  const maxHeight = pageHeight * 0.5;
 
-  pdf.addImage(imgData, 'PNG', x, y, passWidth, passHeight);
+  // px → pt
+  const imgWidth = canvas.width * 0.75;
+  const imgHeight = canvas.height * 0.75;
 
-  const blob = pdf.output('blob');
-  return blob;
+  // Preserve aspect ratio
+  const scale = Math.min(
+    maxWidth / imgWidth,
+    maxHeight / imgHeight
+  );
+
+  // ROUND values (critical fix)
+  const renderWidth = Math.floor(imgWidth * scale);
+  const renderHeight = Math.floor(imgHeight * scale);
+
+  // Small safe padding to avoid clipping
+  const safePadding = 1; // pt
+
+  const x = Math.round((pageWidth - renderWidth) / 2);
+  const y = Math.round((pageHeight - renderHeight) / 2);
+
+  // Draw image
+  pdf.addImage(
+    imgData,
+    'PNG',
+    x + safePadding,
+    y + safePadding,
+    renderWidth - safePadding * 2,
+    renderHeight - safePadding * 2,
+    undefined,
+    'FAST'
+  );
+
+  // OPTIONAL: PDF-safe border (never clips)
+  pdf.setLineWidth(0.8);
+  pdf.setDrawColor(0, 0, 0);
+  pdf.roundedRect(
+  x,
+  y,
+  renderWidth,
+  renderHeight,
+  25, // radius X
+  25  // radius Y
+);
+
+  return pdf.output('blob');
 }
 
-
-
-
-
 async function downloadTicketClicked() {
-
-  console.log('download function reached out...')
-
   try {
     downloadBtn.classList.add('loading');
-    const pdfBlob = await generatePdfBlobFromNode();
 
-    const filename = `ticket-${new Date().toISOString().slice(0,10)}.pdf`;
-    const url = URL.createObjectURL(pdfBlob);
+    const blob = await generatePdfBlobFromNode();
+    const url = URL.createObjectURL(blob);
+
     const link = document.createElement('a');
     link.href = url;
-    link.download = filename;
+    link.download = `ticket-${Date.now()}.pdf`;
     document.body.appendChild(link);
-
-    // trigger download
     link.click();
 
-    // cleanup after small delay so browser had time to start download
     setTimeout(() => {
       link.remove();
       URL.revokeObjectURL(url);
     }, 500);
 
   } catch (err) {
-    console.error('Download error:', err);
-    alert('Could not create/download ticket: ' + (err.message || err));
+    console.error(err);
+    alert('Ticket download failed');
   } finally {
     downloadBtn.classList.remove('loading');
   }
 }
-
-
 
 
 
